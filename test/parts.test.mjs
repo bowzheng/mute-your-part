@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import '../extension/src/shared/parts.js';
 
-const { STEMS, ROLES, findRole, stemGains } = globalThis.PlayAlongParts;
+const { STEMS, ROLES, findRole, stemGains } = globalThis.MuteYourPartParts;
 
 test('every role mutes one known stem', () => {
   assert.equal(ROLES.length, 5);

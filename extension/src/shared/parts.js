@@ -18,5 +18,5 @@
     return Object.fromEntries(STEMS.map((stem) => [stem, stem === muted ? 0 : 1]));
   };
 
-  globalThis.PlayAlongParts = Object.freeze({ STEMS, ROLES, findRole, stemGains });
+  globalThis.MuteYourPartParts = Object.freeze({ STEMS, ROLES, findRole, stemGains });
 })();

@@ -1,6 +1,4 @@
-# MusicTrackRemove
-
-Working product name: **Play Along for YouTube**.
+# Mute Your Part
 
 A Chrome extension for musicians: choose your instrument and mute your part on a YouTube song, so the rest of the band keeps playing while you take over. Separation is designed to run entirely inside Chrome, with no server.
 

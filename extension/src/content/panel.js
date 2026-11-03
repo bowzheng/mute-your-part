@@ -1,9 +1,9 @@
 (() => {
-  const PANEL_ID = 'play-along-panel';
+  const PANEL_ID = 'mute-your-part-panel';
   const STORAGE_KEY = 'roleId';
   const MAX_ATTEMPTS = 40;
   const RETRY_MS = 250;
-  const { ROLES, findRole } = globalThis.PlayAlongParts;
+  const { ROLES, findRole } = globalThis.MuteYourPartParts;
 
   let retryTimer = null;
   let selectedRoleId = null;
@@ -21,7 +21,7 @@
     for (const button of panel.querySelectorAll('button')) {
       button.setAttribute('aria-pressed', String(button.dataset.role === selectedRoleId));
     }
-    panel.querySelector('.play-along-status').textContent = statusText();
+    panel.querySelector('.mute-your-part-status').textContent = statusText();
   };
 
   const selectRole = async (roleId, panel) => {
@@ -30,20 +30,20 @@
     try {
       await chrome.storage.sync.set({ [STORAGE_KEY]: selectedRoleId });
     } catch (error) {
-      console.warn('[Play Along] Could not save your part.', error);
+      console.warn('[Mute Your Part] Could not save your part.', error);
     }
   };
 
   const createPanel = () => {
     const panel = document.createElement('section');
     panel.id = PANEL_ID;
-    panel.setAttribute('aria-label', 'Play Along');
+    panel.setAttribute('aria-label', 'Mute Your Part');
 
     const title = document.createElement('h2');
-    title.textContent = 'Play Along';
+    title.textContent = 'Mute Your Part';
 
     const roles = document.createElement('div');
-    roles.className = 'play-along-roles';
+    roles.className = 'mute-your-part-roles';
     for (const role of ROLES) {
       const button = document.createElement('button');
       button.type = 'button';
@@ -54,7 +54,7 @@
     }
 
     const status = document.createElement('p');
-    status.className = 'play-along-status';
+    status.className = 'mute-your-part-status';
     status.setAttribute('role', 'status');
 
     panel.append(title, roles, status);
@@ -85,7 +85,7 @@
       const stored = await chrome.storage.sync.get(STORAGE_KEY);
       selectedRoleId = findRole(stored[STORAGE_KEY])?.id ?? null;
     } catch (error) {
-      console.warn('[Play Along] Could not load your part.', error);
+      console.warn('[Mute Your Part] Could not load your part.', error);
     }
     document.addEventListener('yt-navigate-finish', () => syncPanel());
     syncPanel();
