@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Play Along for YouTube",
+  "version": "0.1.0",
+  "description": "Mute your part on YouTube songs and play along with the band.",
+  "minimum_chrome_version": "124",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["src/shared/parts.js", "src/content/panel.js"],
+      "css": ["src/content/panel.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

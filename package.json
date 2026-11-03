@@ -1,0 +1,13 @@
+{
+  "name": "music-track-remove",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "description": "Chrome extension that lets musicians mute their part on YouTube songs.",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
